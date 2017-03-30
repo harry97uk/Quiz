@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width">
+                <title>Question 1</title>
+                <style>
+                    body#question1{
+                        background-color: rgb(200,130,130);
+                    }
+                
+                h1#title{
+                    background-color: rgb(130,130,200);
+                    font-family: sans-serif;
+                }
+                
+                h2#description{
+                    background-color: rgb(130,130,200);
+                    font-family: sans-serif;
+                }
+                
+                img#lizard{
+                    position: absolute;
+                    top: 80%;
+                    
+                }
+                
+                img#fish{
+                    position: absolute;
+                    top: 80%;
+                    left: 70%;
+                }
+                
+                button#gButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 40%;
+                    left: 31%;
+                }
+                button#lButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 40%;
+                    right: 31%;
+                }
+                button#liButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 80%;
+                    left: 31%;
+                }
+                button#fButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 80%;
+                    right: 31%;
+                }
+                button#gButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#lButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#liButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#fButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#playButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                }
+                button#playButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                
+                    </style>
+                <script src="AudioBufferManager.js"></script>
+    </head>
+    <body id="question1" width="100%" height="100%">
+        <h1 id="title" align="center">Animal Sound 1</h1>
+        <h2 id="description" align="center">Which animal is it?</h2>
+        <img id="giraffe" src="http://people.ucsc.edu/~jbaraja4/giraffe_gary.jpg" width="30%" height="60%" align="left"></img>
+        <img id="lion" src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_progressive,h_1200,q_90,w_2000/v1/178274/The-best-top-desktop-lion-wallpapers-hd-lion-wallpaper-11_xjbx08.jpg" width="30%" height="60%" align="right"></img>
+        <img id="lizard" src="http://animalia-life.club/data_images/lizard/lizard4.jpg" width="30%" height="60%" align="left"></img>
+        <img id="fish" src="https://s-media-cache-ak0.pinimg.com/originals/42/e8/c0/42e8c0bcdea344eebb29faaf2e5f544e.jpg" width="30%" height="60%"></img>
+        <center><button id="playButton">Click to hear the noise!</button></center>
+        <button id="gButton">Giraffe</button>
+        <button id="lButton">Lion</button>
+        <button id="liButton">Lizard</button>
+        <button id="fButton">Fish</button>
+        
+        <script>
+            var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            var audioBufferManager = new AudioBufferManager(audioContext);
+            
+            
+            audioBufferManager.createBufferFor("lion.mp3");
+            
+            
+            function playFromBufferNumber(number) {
+                var audioSource = audioContext.createBufferSource();
+                audioSource.buffer = audioBufferManager.buffers[number];
+                audioSource.connect(audioContext.destination);
+                audioSource.start(number);
+            }
+        
+        window.addEventListener("mousemove", startup);
+        function startup(event){
+            
+            playFromBufferNumber(0);
+            audioBufferManager.createBufferFor("Basketball Buzzer-SoundBible.com-1863250611.mp3");
+
+            window.removeEventListener("mousemove", startup);
+            
+        }
+
+var button1 = document.getElementById("playButton");
+button1.addEventListener("click", buttonActions);
+function buttonActions(event){
+    playFromBufferNumber(0);
+}
+        var button2 = document.getElementById("gButton");
+        button2.addEventListener("click", buttonActions1);
+        var button3 = document.getElementById("fButton");
+        button3.addEventListener("click", buttonActions1);
+        var button4 = document.getElementById("liButton");
+        button4.addEventListener("click", buttonActions1);
+        var button5 = document.getElementById("lButton");
+        button5.addEventListener("click", buttonActions2);
+        function buttonActions1(event){
+                        playFromBufferNumber(1);
+        }
+        function buttonActions2(event){
+             window.location.href="question2.html";
+        }
+        </script>
+    </body>
+</html>

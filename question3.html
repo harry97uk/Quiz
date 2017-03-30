@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width">
+                <title>Question 3</title>
+                <style>
+                    body#question3{
+                        background-color: rgb(200,130,130);
+                    }
+                
+                h1#title{
+                    background-color: rgb(130,130,200);
+                    font-family: sans-serif;
+                }
+                
+                h2#description{
+                    background-color: rgb(130,130,200);
+                    font-family: sans-serif;
+                }
+                
+                img#shark{
+                    position: absolute;
+                    top: 80%;
+                    
+                }
+                
+                img#cat{
+                    position: absolute;
+                    top: 80%;
+                    left: 70%;
+                }
+                
+                button#caButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 40%;
+                    left: 31%;
+                }
+                button#sButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 40%;
+                    right: 31%;
+                }
+                button#shButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 80%;
+                    left: 31%;
+                }
+                button#cButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                    position: absolute;
+                    top: 80%;
+                    right: 31%;
+                }
+                button#caButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#sButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#shButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#cButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                button#playButton{
+                    font-size: 24px;
+                    background-color: white;
+                    border-radius: 50%;
+                    -webkit-transition-duration: 0.4s;
+                    transition-duration: 0.4s;
+                }
+                button#playButton:hover{
+                    background-color: lightgreen;
+                    
+                }
+                
+                    </style>
+                <script src="AudioBufferManager.js"></script>
+    </head>
+    <body id="question3" width="100%" height="100%">
+        <h1 id="title" align="center">Animal Sound 3</h1>
+        <h2 id="description" align="center">Which animal is it?</h2>
+        <img id="camel" src="http://animalsbirds.com/wp-content/uploads/2016/07/Beautiful-Camel-Animal-Wallpapers-Free-Download.jpg" width="30%" height="60%" align="left"></img>
+        <img id="spider" src="http://www.asgardsss.co.uk/media/wysiwyg/Spider_Image.jpg" width="30%" height="60%" align="right"></img>
+        <img id="shark" src="http://www.pageresource.com/wallpapers/wallpaper/shark-that-always-swimming-the-move_465944.jpg" width="30%" height="60%" align="left"></img>
+        <img id="cat" src="http://writm.com/wp-content/uploads/2016/08/Cat-hd-wallpapers.jpg" width="30%" height="60%"></img>
+        <center><button id="playButton">Click to hear the noise!</button></center>
+        <button id="caButton">Camel</button>
+        <button id="sButton">Spider</button>
+        <button id="shButton">Shark</button>
+        <button id="cButton">Cat</button>
+        
+        <script>
+            var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            var audioBufferManager = new AudioBufferManager(audioContext);
+            
+            audioBufferManager.createBufferFor("Meow-sound-effect.mp3");
+            
+            
+            
+            function playFromBufferNumber(number) {
+                var audioSource = audioContext.createBufferSource();
+                audioSource.buffer = audioBufferManager.buffers[number];
+                audioSource.connect(audioContext.destination);
+                audioSource.start(number);
+            }
+        
+        window.addEventListener("mousemove", startup);
+        function startup(event){
+            
+            playFromBufferNumber(0);
+            audioBufferManager.createBufferFor("Basketball Buzzer-SoundBible.com-1863250611.mp3");
+            window.removeEventListener("mousemove", startup);
+            
+        }
+
+var button1 = document.getElementById("playButton");
+button1.addEventListener("click", buttonActions);
+function buttonActions(event){
+    playFromBufferNumber(0);
+}
+        var button2 = document.getElementById("caButton");
+        button2.addEventListener("click", buttonActions1);
+        var button3 = document.getElementById("sButton");
+        button3.addEventListener("click", buttonActions1);
+        var button4 = document.getElementById("shButton");
+        button4.addEventListener("click", buttonActions1);
+        var button5 = document.getElementById("cButton");
+        button5.addEventListener("click", buttonActions2);
+        function buttonActions1(event){
+            
+            playFromBufferNumber(1);
+        }
+        function buttonActions2(event){
+             window.location.href="question4.html";
+        }
+        </script>
+    </body>
+</html>
